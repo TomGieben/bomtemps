@@ -18,19 +18,13 @@ class Table extends Model
 
     public static function render(string $html = ''): HtmlString
     {
-        $html .= '<div class="row">';
-
         foreach(Table::all() as $table) {
             $html .= '
-                <div class="col-auto">
-                    <div id="dxy" class="btn btn-warning" style="width: 200px; height: 200px;">
-                        ' . $table->unique_target . '
-                    </div>
+                <div id="table-'. $table->id .'" onclick="drag('. $table->id .')" class="btn btn-warning" style="width: 200px; height: 200px;">
+                    ' . $table->unique_target . '
                 </div>
             ';
         }
-
-        $html .= '</div>';
 
         return new HtmlString($html);
     }
