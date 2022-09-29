@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Schema;
 use App\Models\User;
 use App\Models\Table;
 use App\Models\Customer;
+use Illuminate\Support\Facades\DB;
 
 class CreateReservationsTable extends Migration
 {
