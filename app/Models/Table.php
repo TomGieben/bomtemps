@@ -14,18 +14,31 @@ class Table extends Model
 
     protected $fillable = [
         'unique_target',
+        'location',
     ];
 
     public static function render(string $html = ''): HtmlString
     {
         foreach(Table::all() as $table) {
             $html .= '
-                <div id="table-'. $table->id .'" onclick="drag('. $table->id .')" class="btn btn-warning" style="width: 200px; height: 200px;">
+                <div id="table-'. $table->id .'" class="btn btn-warning"
+                style=
+                "
+                    width: 200px;
+                    height: 200px;
+                    transform: translate3d('. $table->getLocation('x') .'px, '. $table->getLocation('y') .'px, 0);
+                ">
                     ' . $table->unique_target . '
                 </div>
             ';
         }
 
         return new HtmlString($html);
+    }
+
+    public function getLocation(string $axis): int {
+        $location = json_decode($this->location);
+
+        return $location->$axis;
     }
 }

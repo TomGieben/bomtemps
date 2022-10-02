@@ -14,7 +14,7 @@ class AddPositionColumnToTablesTable extends Migration
     public function up()
     {
         Schema::table('tables', function (Blueprint $table) {
-            $table->json('position')->nullable()->after('unique_target');
+            $table->json('location')->nullable()->after('unique_target');
         });
     }
 

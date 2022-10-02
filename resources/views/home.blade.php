@@ -7,13 +7,28 @@ use App\Models\Table;
 @section('content')
     <div class="container">
         <div class="card">
-            <div class="card-header">Tafel overzicht</div>
+            <div class="card-header">
+                <div class="row justify-content-between">
+                    <div class="col-auto">
+                        <div class="card-title">
+                            Tafel overzicht
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <a href="" class="btn btn-success">
+                            <i class="fas fa-plus"></i>
+                            Tafel
+                        </a>
+                    </div>
+                </div>
+            </div>
 
-            <div class="card-body" id="container">
+            <div class="card-body" style="height: 80vh;" id="container">
                 {{ Table::render() }}
             </div>
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         var container = document.querySelector("#container");
 
@@ -52,8 +67,25 @@ use App\Models\Table;
         function dragEnd(e) {
             initialX = currentX;
             initialY = currentY;
+            table = e.target.id.split("-")[1];
+
+            ajaxRequest(initialX, initialY, table);
 
             active = false;
+        }
+
+        function ajaxRequest(initialX, initialY, table) {
+            var route = '{{ route('tables.location') }}';
+
+            $.ajax({
+                url: route,
+                type: "GET",
+                data: {
+                    table: table,
+                    initialY: initialY,
+                    initialX: initialX,
+                },
+            });
         }
 
         function drag(e) {
