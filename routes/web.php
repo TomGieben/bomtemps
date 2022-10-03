@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\TableController;
 
 /*
@@ -27,6 +28,13 @@ Route::group(['middleware' => 'auth'], function () {
     // tables
     Route::get('/tables/create', [TableController::class, 'create'])->name('tables.create');
     Route::post('/tables/store', [TableController::class, 'store'])->name('tables.store');
+
+    //products
+    //index functie toevoegen
+    Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
+    Route::post('/products/store', [productController::class, 'store'])->name('products.store');
+    Route::get('/products', [productController::class, 'index'])->name('products.index');
+
 
     // ajax call
     Route::get('/tables/location', [TableController::class, 'location'])->name('tables.location');
