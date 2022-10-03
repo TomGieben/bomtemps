@@ -20,8 +20,11 @@ class Table extends Model
     public static function render(string $html = ''): HtmlString
     {
         foreach(Table::all() as $table) {
+
+            // onclick="location.href=\''. route('tables.show', [$table]) .'\'"
+
             $html .= '
-                <div id="table-'. $table->id .'" class="btn btn-warning"
+                <div id="table-'. $table->id .'" class="btn btn-warning shadow-lg"
                 style=
                 "
                     width: 100px;
@@ -39,6 +42,6 @@ class Table extends Model
     public function getLocation(string $axis): int {
         $location = json_decode($this->location);
 
-        return $location->$axis;
+        return $location->$axis ?? 0;
     }
 }

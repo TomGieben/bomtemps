@@ -7,6 +7,10 @@ use App\Models\Table;
 
 class TableController extends Controller
 {
+    public function show(Table $table) {
+
+    }
+
     public function create() {
         return view('tables.create');
     }
@@ -37,5 +41,7 @@ class TableController extends Controller
         $table->update([
             'location' => json_encode($location)
         ]);
+
+        return true;
     }
 }
