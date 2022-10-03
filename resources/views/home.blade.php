@@ -76,20 +76,21 @@ use App\Models\Table;
 
         function drag(e) {
             if (active) {
+                if (e.target.id !== "container") {
+                    e.preventDefault();
 
-                e.preventDefault();
+                    if (e.type === "touchmove") {
+                        currentX = e.touches[0].clientX - initialX;
+                        currentY = e.touches[0].clientY - initialY;
+                    } else {
+                        currentX = e.clientX - initialX;
+                        currentY = e.clientY - initialY;
+                    }
 
-                if (e.type === "touchmove") {
-                    currentX = e.touches[0].clientX - initialX;
-                    currentY = e.touches[0].clientY - initialY;
-                } else {
-                    currentX = e.clientX - initialX;
-                    currentY = e.clientY - initialY;
+                    var dragItem = document.querySelector("#" + e.target.id);
+
+                    setTranslate(currentX, currentY, dragItem);
                 }
-
-                var dragItem = document.querySelector("#" + e.target.id);
-
-                setTranslate(currentX, currentY, dragItem);
             }
         }
 
