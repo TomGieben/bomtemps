@@ -12,13 +12,19 @@ class TableController extends Controller
     }
 
     public function store(Request $request) {
-        if(!Table::where('unique_target', $request->unique_target)->exists()) {
+        if(!Table::where('unique_target', $request->unique_target)->withTrashed()->exists()) {
             Table::create([
-                'unique_target' => $request->unique_target
+                'unique_target' => $request->unique_target,
+                'location' => json_encode([
+                    'y' => 0,
+                    'x' => 0,
+                ]),
             ]);
+        } else {
+            return redirect()->back()->with('error', 'De gebruikte naam bestaat al.');
         }
 
-        return redirect()->route('home');
+        return redirect()->route('home')->with('success', 'Tafel toegevoegd.');
     }
 
     public function location(Request $request) {

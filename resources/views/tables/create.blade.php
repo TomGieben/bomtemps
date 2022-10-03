@@ -20,7 +20,8 @@
                                 <i class="fas fa-text"></i>
                                 Naam
                             </label>
-                            <input type="text" class="form-control" id="unique_target" name="unique_target" required>
+                            <input type="text" class="form-control" id="unique_target" name="unique_target"
+                                value="{{ old('name') }}" required>
                         </div>
                     </div>
                 </div>

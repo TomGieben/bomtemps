@@ -74,20 +74,6 @@ use App\Models\Table;
             active = false;
         }
 
-        function ajaxRequest(initialX, initialY, table) {
-            var route = '{{ route('tables.location') }}';
-
-            $.ajax({
-                url: route,
-                type: "GET",
-                data: {
-                    table: table,
-                    initialY: initialY,
-                    initialX: initialX,
-                },
-            });
-        }
-
         function drag(e) {
             if (active) {
 
@@ -101,13 +87,24 @@ use App\Models\Table;
                     currentY = e.clientY - initialY;
                 }
 
-                xOffset = currentX;
-                yOffset = currentY;
-
                 var dragItem = document.querySelector("#" + e.target.id);
 
                 setTranslate(currentX, currentY, dragItem);
             }
+        }
+
+        function ajaxRequest(initialX, initialY, table) {
+            var route = '{{ route('tables.location') }}';
+
+            $.ajax({
+                url: route,
+                type: "GET",
+                data: {
+                    table: table,
+                    initialY: initialY,
+                    initialX: initialX,
+                },
+            });
         }
 
         function setTranslate(xPos, yPos, el) {
