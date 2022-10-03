@@ -24,8 +24,8 @@ class Table extends Model
                 <div id="table-'. $table->id .'" class="btn btn-warning"
                 style=
                 "
-                    width: 200px;
-                    height: 200px;
+                    width: 100px;
+                    height: 100px;
                     transform: translate3d('. $table->getLocation('x') .'px, '. $table->getLocation('y') .'px, 0);
                 ">
                     ' . $table->unique_target . '

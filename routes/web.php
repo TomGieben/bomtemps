@@ -24,6 +24,10 @@ Auth::routes();
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
 
+    // tables
+    Route::get('/tables/create', [TableController::class, 'create'])->name('tables.create');
+    Route::post('/tables/store', [TableController::class, 'store'])->name('tables.store');
+
     // ajax call
-    Route::get('/table/location', [TableController::class, 'location'])->name('tables.location');
+    Route::get('/tables/location', [TableController::class, 'location'])->name('tables.location');
 });
