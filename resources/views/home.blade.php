@@ -26,6 +26,39 @@ use App\Models\Table;
             <div class="card-body" style="height: 80vh;" id="container">
                 {{ Table::render() }}
             </div>
+
+            <div class="card-footer">
+                <table class="table">
+                    <thead>
+                        <td>
+                            Tafel
+                        </td>
+                        <td>
+                            Tijden
+                        </td>
+                        <td>
+                            Menu's
+                        </td>
+                        <td>
+                            Totaal
+                        </td>
+                    </thead>
+                    <tbody>
+                        <td id="table">
+
+                        </td>
+                        <td id="time">
+
+                        </td>
+                        <td id="menus">
+
+                        </td>
+                        <td id="total">
+
+                        </td>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
     @include('layouts.table');

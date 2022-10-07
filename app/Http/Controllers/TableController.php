@@ -38,14 +38,14 @@ class TableController extends Controller
     public function location(Request $request) {
         $table = Table::where('id', $request->table)->first();
         $location = [
-            'y' => $request->initialY,
-            'x' => $request->initialX,
+            'y' => $request->initialY ?? $table->getLocation('y'),
+            'x' => $request->initialX ?? $table->getLocation('x'),
         ];
 
         $table->update([
             'location' => json_encode($location)
         ]);
 
-        return true;
+        return $table;
     }
 }

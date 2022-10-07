@@ -18,6 +18,17 @@
     container.addEventListener("mouseup", dragEnd, false);
     container.addEventListener("mousemove", drag, false);
 
+    container.addEventListener("mouseover", getData, false);
+
+    function getData(e) {
+        table = e.target.id.split("-")[1];
+        ajaxRequest(null, null, table);
+    }
+
+    function showData(data) {
+        document.getElementById('table').innerHTML = data.unique_target;
+    }
+
     function dragStart(e) {
         if (e.type === "touchstart") {
             initialX = e.touches[0].clientX - xOffset;
@@ -75,6 +86,9 @@
                 initialY: initialY,
                 initialX: initialX,
             },
+            success: function(data) {
+                return showData(data);
+            }
         });
     }
 
