@@ -16,6 +16,10 @@ class TableController extends Controller
     }
 
     public function store(Request $request) {
+        if(!isset($request->unique_target)) {
+            return redirect()->back()->with('error', 'Voer een naam in.');
+        }
+
         if(!Table::where('unique_target', $request->unique_target)->withTrashed()->exists()) {
             Table::create([
                 'unique_target' => $request->unique_target,
