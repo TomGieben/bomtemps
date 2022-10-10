@@ -39,7 +39,7 @@
         }
 
         for (let i = 0; i < data.menus.length; i++) {
-            htmlMenus += data.menus[i].name + ' / ' + data.menus[i].name + '<br/>';
+            htmlMenus += data.menus[i].name + '<br/>';
         }
 
         table.innerHTML = data.unique_target;
