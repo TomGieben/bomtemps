@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CustomerController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
@@ -39,6 +40,9 @@ Route::group(['middleware' => 'auth'], function () {
     
     Route::put('/products/{product}/update', [productController::class, 'update'])->name('products.update');
     Route::post('/products/store', [productController::class, 'store'])->name('products.store');
+
+    //customer download
+    Route::get('/customer_download', [CustomerController::class, 'download'])->name('customer_download.index');
 
 
     // ajax call
