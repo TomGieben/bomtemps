@@ -20,9 +20,6 @@ class Table extends Model
     public static function render(string $html = ''): HtmlString
     {
         foreach(Table::all() as $table) {
-
-            // onclick="location.href=\''. route('tables.show', [$table]) .'\'"
-
             $html .= '
                 <div id="table-'. $table->id .'" class="btn btn-warning shadow-lg"
                 style=
