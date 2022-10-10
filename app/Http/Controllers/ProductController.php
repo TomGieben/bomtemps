@@ -9,6 +9,7 @@ use App\Models\Product;
 class ProductController extends Controller
 {
     public function index() {
+        //$products = Product::where('deleted_at', (null))->get();
         $products = Product::all();
 
         return view('products.index', [
@@ -54,5 +55,17 @@ class ProductController extends Controller
          // Overzicht pagina producten
          return redirect()->route('products.index');
      }
+    }
+
+    public function delete(Product $product) {
+
+        //$deleted = Product::where('id', $product->id)->delete();
+        $deleted = Product::where('id', $product->id)
+        ->update([ 'deleted_at' => date("Y/m/d")]);
+
+        return view('products.delete', [
+            'product' => $product,
+            'deleted' => $deleted,
+        ]);
     }
 }
