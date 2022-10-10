@@ -21,7 +21,7 @@
                                 Naam
                             </label>
                             <input type="text" class="form-control" id="unique_target" name="unique_target"
-                                value="{{ old('name') }}" required>
+                                value="{{ old('name') }}">
                         </div>
                     </div>
                 </div>
