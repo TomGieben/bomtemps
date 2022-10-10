@@ -34,6 +34,7 @@ Route::group(['middleware' => 'auth'], function () {
     //index functie toevoegen
     Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
     Route::get('/products/{product}/edit', [productController::class, 'edit'])->name('products.edit');
+    Route::get('/products/{product}/delete', [productController::class, 'delete'])->name('products.delete');
     Route::get('/products', [productController::class, 'index'])->name('products.index');
     
     Route::put('/products/{product}/update', [productController::class, 'update'])->name('products.update');

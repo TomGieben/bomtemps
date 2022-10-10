@@ -38,6 +38,7 @@ use App\Models\Table;
                                 <td>{{ $product->description }}</td>
                                 <td>
                                     <a href="{{ route('products.edit', [$product]) }}" class="btn btn-warning">Bewerken</a>
+                                    <a href="{{ route('products.delete', [$product]) }}" class="btn btn-danger">verwijderen</a>
                                 </td>
                             </tr>
                         @endforeach
