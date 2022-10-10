@@ -36,7 +36,12 @@ class TableController extends Controller
     }
 
     public function location(Request $request) {
-        $table = Table::where('id', $request->table)->first();
+        $table = Table::query()
+            ->where('id', $request->table)
+            ->with('menus')
+            ->with('reservations')
+            ->first();
+
         $location = [
             'y' => $request->initialY ?? $table->getLocation('y'),
             'x' => $request->initialX ?? $table->getLocation('x'),
