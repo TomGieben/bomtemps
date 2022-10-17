@@ -53,6 +53,6 @@ class Table extends Model
 
     public function menus(): BelongsToMany
     {
-        return $this->belongsToMany(Menu::class, 'table_menu', 'table_id', 'menu_id')->withPivot('done', 'done');
+        return $this->belongsToMany(Menu::class, 'table_menu', 'table_id', 'menu_id')->withPivot('done');
     }
 }
