@@ -36,8 +36,8 @@ use App\Models\Table;
                             <tr>
                                 <td>{{ $product->name }}</td>
                                 <td>{{ $product->price }}</td>
-                                <td><details>
-                                    <summary>meer lezen</summary>
+                                <td width="450"><details>
+                                    <summary></summary>
                                     <p>{{ $product->description }}</p>
                                     </details></td>
                                 <td><a href="{{ route('products.edit', [$product]) }}" class="btn btn-warning">Bewerken</a></td>
