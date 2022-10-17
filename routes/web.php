@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\TableController;
+use App\Http\Controllers\ReservationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,10 @@ Auth::routes();
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
 
+
+    // reservations
+    Route::resource('reservations', ReservationController::class);
+
     // tables
     Route::get('/tables/{table}/show', [TableController::class, 'show'])->name('tables.show');
     Route::get('/tables/create', [TableController::class, 'create'])->name('tables.create');
@@ -37,7 +42,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/products/{product}/edit', [productController::class, 'edit'])->name('products.edit');
     Route::get('/products/{product}/delete', [productController::class, 'delete'])->name('products.delete');
     Route::get('/products', [productController::class, 'index'])->name('products.index');
-    
+
     Route::put('/products/{product}/update', [productController::class, 'update'])->name('products.update');
     Route::post('/products/store', [productController::class, 'store'])->name('products.store');
 
