@@ -1,5 +1,5 @@
 @php
-use App\Models\Table;
+    use App\Models\Table;
 @endphp
 
 @extends('layouts.app')
@@ -34,6 +34,9 @@ use App\Models\Table;
                             Tafel
                         </td>
                         <td>
+                            Klant
+                        </td>
+                        <td>
                             Tijden
                         </td>
                         <td>
@@ -45,6 +48,9 @@ use App\Models\Table;
                     </thead>
                     <tbody>
                         <td id="table">
+
+                        </td>
+                        <td id="customer">
 
                         </td>
                         <td id="time">

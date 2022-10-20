@@ -29,13 +29,16 @@
         var table = document.getElementById('table');
         var time = document.getElementById('time');
         var menus = document.getElementById('menus');
+        var customer = document.getElementById('customer');
         var htmlTime = '';
         var htmlMenus = '';
+        var htmlCustomers = '';
 
         table.innerHTML = data.unique_target;
 
         for (let i = 0; i < data.reservations.length; i++) {
             htmlTime += data.reservations[i].from + ' / ' + data.reservations[i].to + '<br/>';
+            htmlCustomers += data.reservations[i].customer.name + '<br/>';
         }
 
         for (let i = 0; i < data.menus.length; i++) {
@@ -45,6 +48,7 @@
         table.innerHTML = data.unique_target;
         time.innerHTML = htmlTime;
         menus.innerHTML = htmlMenus;
+        customer.innerHTML = htmlCustomers;
     }
 
     function dragStart(e) {

@@ -39,7 +39,9 @@ class TableController extends Controller
         $table = Table::query()
             ->where('id', $request->table)
             ->with('menus')
-            ->with('reservations')
+            ->with('reservations', function($query) {
+                $query->with('customer');
+            })
             ->first();
 
         $location = [
