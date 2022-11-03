@@ -54,8 +54,10 @@ class MenuController extends Controller
             ]);
 
             foreach($request->products as $productId) {   
-                // $menu->id
-                // $productId
+                productmenu::create([
+                    'product_id' => $productId,
+                    'menu_id' => $menu->id,
+                ]);
             }
         }
 

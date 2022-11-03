@@ -8,7 +8,7 @@
             <div class="card-header">
                 <div class="row align-items-center">
                     <div class="col-auto me-auto">
-                        <div class="card-title">product toevoegen</div>
+                        <div class="card-title">menu toevoegen</div>
                     </div>
                 </div>
             </div>
