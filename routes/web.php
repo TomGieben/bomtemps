@@ -47,7 +47,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/products/store', [productController::class, 'store'])->name('products.store');
 
     //menus
-    Route::get('/menu', [MenuController::class, 'index'])->name('menu.index');
+    Route::get('/menus', [MenuController::class, 'index'])->name('menu.index');
+    Route::get('/menus/{menu}/edit', [menuController::class, 'edit'])->name('menu.edit');
+    Route::get('/menus/{menu}/delete', [menuController::class, 'delete'])->name('menu.delete');
+    Route::get('/menus/create', [menuController::class, 'create'])->name('menu.create');
+
+    Route::post('/menus/store', [menuController::class, 'store'])->name('menu.store');
+    Route::put('/menus/{menu}/update', [menuController::class, 'update'])->name('menu.update');
 
     //customer download
     Route::get('/customer_download', [CustomerController::class, 'download'])->name('customer_download.index');
